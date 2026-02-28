@@ -36,7 +36,10 @@ namespace RateMyMusicAuth.Services
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("username", username),
                 new Claim(ClaimTypes.Role, user.Role),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("genres", user.Profile?.Preferences != null
+                     ? string.Join(",", user.Profile.Preferences.Select(p => p.Genre))
+                     : "")
             };
 
             var token = new JwtSecurityToken(
