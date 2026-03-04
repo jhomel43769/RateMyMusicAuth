@@ -36,7 +36,7 @@ namespace RateMyMusicAuth.Services
             {
                 Email = request.Email,
                 PasswordHash = passwordHash,
-                Role = "User",
+                Role = "Pending",
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = DateTime.UtcNow
